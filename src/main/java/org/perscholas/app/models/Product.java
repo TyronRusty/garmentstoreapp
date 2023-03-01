@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
-@AllArgsConstructor
+
 @Entity
 @Slf4j
 @Table(name="Products")
@@ -39,6 +39,29 @@ public class Product {
 
     @NonNull
     String productDescription;
+
+    public Product(@NonNull int productId, @NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.productSKU = productSKU;
+        this.productQuantity = productQuantity;
+        this.productDescription = productDescription;
+    }
+
+    public Product(@NonNull int productId, @NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription, Category category) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.productSKU = productSKU;
+        this.productQuantity = productQuantity;
+        this.productDescription = productDescription;
+        this.category = category;
+    }
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})

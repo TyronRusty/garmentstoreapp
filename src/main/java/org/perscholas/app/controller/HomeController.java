@@ -12,10 +12,20 @@ public class HomeController {
     }
     @GetMapping("/shoes")
     public String homeShoes(){
-        return "shoes.html";
+        return "shoes";
     }
     @GetMapping("/hoodies")
     public String homeHoodies(){
         return "hoodies";
+    }
+    @GetMapping("/Tshirt")
+    public String homeTshirt(){
+        return "Tshirt";
+    }
+
+    // get map for test only
+    @GetMapping("/tested")
+    public String getTested(){
+        return "tested";
     }
 }

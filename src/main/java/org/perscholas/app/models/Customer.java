@@ -42,6 +42,19 @@ public class Customer {
     @NonNull
     String country;
 
+    public Customer(@NonNull int id, @NonNull String firstName, @NonNull String lastName, @NonNull String email, @NonNull String phone, @NonNull String password, @NonNull String address, @NonNull String city, @NonNull String state, @NonNull int zipCode, @NonNull String country) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.country = country;
+    }
 
     @ToString.Exclude
     @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
