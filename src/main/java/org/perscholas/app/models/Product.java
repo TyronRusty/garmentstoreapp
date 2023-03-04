@@ -40,6 +40,7 @@ public class Product {
     @NonNull
     String productDescription;
 
+
     public Product(@NonNull int productId, @NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription) {
         this.productId = productId;
         this.productName = productName;
@@ -51,29 +52,9 @@ public class Product {
         this.productDescription = productDescription;
     }
 
-    public Product(@NonNull int productId, @NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription, Category category) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.productSize = productSize;
-        this.productColor = productColor;
-        this.productSKU = productSKU;
-        this.productQuantity = productQuantity;
-        this.productDescription = productDescription;
-        this.category = category;
-    }
-
-    @ToString.Exclude
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
-    @JoinColumn(name = "category_id")
-    private Category category;
-
     @OneToMany(mappedBy = "product", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private Set<CartItem> cartItems = new LinkedHashSet<>();
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
-    private List<OrderDetail> orderDetails = new ArrayList<>();
 
 
     @Override
@@ -81,11 +62,11 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return productId == product.productId && Double.compare(product.productPrice, productPrice) == 0 && productQuantity == product.productQuantity  && productName.equals(product.productName) && productSize.equals(product.productSize) && productColor.equals(product.productColor) && productSKU.equals(product.productSKU) && productDescription.equals(product.productDescription) && Objects.equals(category, product.category) && Objects.equals(cartItems, product.cartItems);
+        return productId == product.productId && Double.compare(product.productPrice, productPrice) == 0 && productQuantity == product.productQuantity  && productName.equals(product.productName) && productSize.equals(product.productSize) && productColor.equals(product.productColor) && productSKU.equals(product.productSKU) && productDescription.equals(product.productDescription) && Objects.equals(cartItems, product.cartItems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, productName, productPrice, productSize, productColor, productSKU, productQuantity, productDescription, category, cartItems);
+        return Objects.hash(productId, productName, productPrice, productSize, productColor, productSKU, productQuantity, productDescription, cartItems);
     }
 }

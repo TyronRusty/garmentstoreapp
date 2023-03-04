@@ -4,7 +4,36 @@
     <meta charset="UTF-8">
     <title> test page</title>
 </head>
-<body>
 
+<body>
+<table> 
+    
+<tr> 
+<th> productId</th>
+<th>color</th>
+<th>desc</th>
+<th>name</th>
+<th>price</th>
+<th>quantity</th>
+<th>sku</th>
+<th>size</th>
+<th>categoryId</th>
+</tr>
+<tr th:each="p: ${product}" >
+<td  th:text="${p.productId}" />
+<td  th:text="${p.productName}" />
+<td th:text="${p.productPrice}" />
+<td th:text="${p.productSize}" />
+<td th:text="${p.productColor}" />
+<td th:text="${p.productSKU}" />
+<td th:text="${p.productQuantity}" />
+<td th:text="${p.productDescription}" />
+<td th:text="${p.category.CategoryId}" />
+
+
+
+</tr>
+
+</table>
 </body>
 </html>

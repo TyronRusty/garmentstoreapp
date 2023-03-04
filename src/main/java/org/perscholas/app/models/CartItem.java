@@ -40,6 +40,15 @@ public class CartItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ToString.Exclude
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
