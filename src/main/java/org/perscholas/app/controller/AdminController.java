@@ -5,6 +5,7 @@ import org.perscholas.app.dao.CartItemRepoI;
 import org.perscholas.app.dao.CustomerRepoI;
 import org.perscholas.app.dao.ImageRepoI;
 import org.perscholas.app.dao.ProductRepoI;
+import org.perscholas.app.models.Customer;
 import org.perscholas.app.models.Product;
 import org.perscholas.app.service.CustomerService;
 import org.perscholas.app.service.ImageService;
@@ -56,5 +57,17 @@ public class AdminController {
 
         return "allproducts";
     }
+    @GetMapping("Customer")
+    public String SeeCustomer(Model model){
+        List<Customer> allCustomers = customerRepoI.findAll();
 
+        // allUsers.forEach(myUser -> log.debug("url form dashboard controller: " + myUser.getImage().getUrl()));
+
+        model.addAttribute("customer", allCustomers);
+
+
+
+
+        return "allCustomers";
+    }
 }
