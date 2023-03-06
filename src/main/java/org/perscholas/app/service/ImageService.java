@@ -1,5 +1,4 @@
 package org.perscholas.app.service;
-import org.perscholas.app.models.Product;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +50,7 @@ public class ImageService {
 
     public void save(MultipartFile file, String productName) throws Exception {
         try {
-            Product product = productRepoI.findByproductName(productName).get();
+
             String ext = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
             log.debug(ext);
             String imageName = productName.split("@")[0].concat("-").concat(String.valueOf(LocalDate.now().getYear())).concat(ext);
@@ -61,13 +60,7 @@ public class ImageService {
             String url = MvcUriComponentsBuilder
                     .fromMethodName(ImageController.class, "getImage", p.getFileName().toString()).build().toString();
             log.debug(url);
-            Image image = new Image();
-            image.setUrl(url);
-        image.setName(imageName);
-            image.setProduct(product);
-            imageRepoI.save(image);
-
-
+            imageRepoI.save(new Image(imageName,url , productRepoI.findByproductName(productName).get()));
         } catch (Exception e) {
             if (e instanceof FileAlreadyExistsException) {
                 throw new Exception("A file of that name already exists.");

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-@FieldDefaults(level = AccessLevel.PRIVATE)
+
 public class MyCommandLineRunner implements CommandLineRunner {
 
     CustomerRepoI customerRepoI;

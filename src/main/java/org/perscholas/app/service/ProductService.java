@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class ProductService {
     @Autowired
@@ -25,10 +26,11 @@ public class ProductService {
             originalProduct.setProductSize(product.getProductSize());
             originalProduct.setProductColor(product.getProductColor());
             originalProduct.setProductQuantity(product.getProductQuantity());
+            originalProduct.setProductDescription(product.getProductDescription());
 
             return productRepoI.save(originalProduct);
         } else {
-         //   log.debug("Product with name " + product.getProductName() + " does not exist!");
+           // log.debug("Product with name " + product.getProductName() + " does not exist!");
             return productRepoI.save(product);
         }
     }

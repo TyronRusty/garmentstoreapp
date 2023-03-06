@@ -34,16 +34,16 @@ public class Image {
     @JoinColumn(name = "product_id")
      Product product;
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Image image = (Image) o;
-//        return id == image.id && name.equals(image.name) && url.equals(image.url);
-//    }
+       @Override
+      public boolean equals(Object o) {
+       if (this == o) return true;
+       if (o == null || getClass() != o.getClass()) return false;
+        Image image = (Image) o;
+        return id == image.id && name.equals(image.name) && url.equals(image.url);
+   }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, name, url);
-//    }
+   @Override
+    public int hashCode() {
+        return Objects.hash(id, name, url);
+    }
 }

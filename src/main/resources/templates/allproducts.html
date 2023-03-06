@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<div th:replace="fragments/frag.html :: head"></div>
+
+  <body id="page-top">
+    <!-- Navigation-->
+  
+    <div th:replace="fragments/frag.html :: nav"></div>
+
+
+    <!-- Header-->
+    <header class="bg-dark bg-gradient text-white">
+      <div class="container px-4 text-center">
+        <h1 class="fw-bolder">Garment store admin portal</h1>
+        <p class="lead">
+          A list of product inventory
+        </p>
+        <a class="btn btn-lg btn-light" href="#about">Start scrolling!</a>
+      </div>
+    </header>
+    <!-- About section-->
+    <section id="about">
+      <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+          <div class="col-lg-8">
+            <h2>product</h2>
+            <table class="table table-hover text-uppercase">
+              <thead>
+                <tr>
+                  <th scope="col">Profile Image</th>
+                  <th scope="col">#</th>
+                  <th scope="col">ProductName</th>
+                  <th scope="col">ProductPrice</th>
+                  <th scope="col">Size</th>
+                  <th scope="col">Color</th>
+             
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="product: ${product}">
+
+                  <td>
+                    <div th:if="${product.image} != null">
+                      <a th:href="@{${product.image.url}}" >
+                    <img th:src="@{${product.image.url}}" class="img-thumbnail">
+                      </a>
+                  </div>
+                  </td>
+
+                  <th scope="row" th:text="${product.productId}">1</th>
+                  <td th:text="${product.productName}">Mark</td>
+                  <td th:text="${product.productPrice}">Otto</td>
+                  <td th:text="${product.productSize}">@mdo</td>
+                  <td th:text="${product.productColor}">Otto</td>
+             
+                  <td th:text="${product.productQuantity}">@mdo</td>
+                  <td th:text="${product.productDescription}">@mdo</td>
+                 
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- ROW ENDS -->
+
+ 
+        <!-- ROW ENDS -->
+      </div>
+    </section>
+    <!-- Services section-->
+   
+    <!-- Contact section-->
+   
+
+    <!-- Footer-->
+    <div th:replace="fragments/frag.html :: footer"></div>
+  </body>
+</html>

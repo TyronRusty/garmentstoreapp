@@ -43,5 +43,18 @@ public class AdminController {
         return "tested";
     }
 
+    @GetMapping("dashboard")
+    public String dash(Model model){
+        List<Product> allProducts = productRepoI.findAll();
+
+        // allUsers.forEach(myUser -> log.debug("url form dashboard controller: " + myUser.getImage().getUrl()));
+
+        model.addAttribute("product", allProducts);
+
+
+
+
+        return "allproducts";
+    }
 
 }

@@ -15,7 +15,7 @@ import java.util.*;
 @Setter
 @Getter
 @ToString
-@EqualsAndHashCode
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Product {
     @Id

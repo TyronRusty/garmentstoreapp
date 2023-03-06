@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+> 
+<div th:replace="fragments/frag.html :: head"></div>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <div th:replace="fragments/frag.html :: nav"></div>
+
+    <!-- Header-->
+    <header class="bg-primary bg-gradient text-white">
+      <div class="container px-4 text-center">
+        <h1 class="fw-bolder">Product registration</h1>
+      </div>
+    </header>
+    <!-- About section-->
+    <section id="about">
+      <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+          <div class="col-lg-8">
+            <h2>User Form</h2>
+            <form th:action="@{/processing}" method="post" enctype="multipart/form-data" accept="image/png, image/jpeg">
+              <div class="form-group">
+                <label for="id">ID</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="id"
+                  placeholder="ID auto generated"
+                  th:field="*{product.productId}"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="productName">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productName"
+                  th:field="*{product.productName}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productPrice">Price</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productPrice"
+                  th:field="*{product.productPrice}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productSize">Size</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productSize"
+                  th:field="*{product.productSize}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productColor">Color</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productColor"
+                  th:field="*{product.productColor}"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="productSKU">Quantity</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productQuantity"
+                  th:field="*{product.productQuantity}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productDescription">Description</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productDescription"
+                  th:field="*{product.productDescription}"
+                />
+              </div>
+           
+              <div class="form-group">
+                <label for="file"></label>
+                <input
+                        type="file"
+                        class="form-control"
+                        id="file"
+                        name="file"
+
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <div
+              class="alert-info"
+              th:if="${message}"
+              th:text="${message}"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services section-->
+    <section class="bg-light" id="services">
+      <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+          <div class="col-lg-8">
+            <h2>Services we offer</h2>
+            <p class="lead">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
+              optio velit inventore, expedita quo laboriosam possimus ea
+              consequatur vitae, doloribus consequuntur ex. Nemo assumenda
+              laborum vel, labore ut velit dignissimos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact section-->
+
+
+    <!-- Footer-->
+    <div th:replace="fragments/frag.html :: footer"></div>
+  </body>
+</html>

@@ -11,6 +11,5 @@ import java.util.Optional;
 public interface ProductRepoI extends JpaRepository<Product, Integer> {
  Optional<Product> findByproductName(String productName);
 
- @Override
- List<Product> findAll();
+
 }
