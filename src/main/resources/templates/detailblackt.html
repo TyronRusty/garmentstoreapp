@@ -17,10 +17,10 @@
     <div th:replace="fragments/frag.html :: nav"></div>
 
   
-    <section class="py-5" th:object="${product}">
+    <section class="py-5" >
         <div class="container px-4 px-lg-5 my-5">   
-          <div class="row gx-4 gx-lg-5 align-items-center" th:object="${product}">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" th:src="@{/IMG/blacktee.JPG}" alt="." /></div>
+          <div class="row gx-4 gx-lg-5 align-items-center" >
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"  th:src="@{/IMG/IMG-2533.JPG}" alt="." /></div>
             <div class="col-md-6">
                 <div class="small mb-1">SKU: BST-498</div>
                 <h1 class="display-5 fw-bolder">GARMENT TEE</h1>
@@ -35,7 +35,7 @@
                 </p>
                 <div class="d-flex align-items-center mb-3">
                     <span class="me-2">Size:</span>
-                    <select class="form-select me-3" aria-label="Select size" th:field="*{productSize}">
+                    <select class="form-select me-3" aria-label="Select size">
                         <option value="">Select size</option>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
@@ -43,17 +43,17 @@
                         <option value="extra-large">Extra Large</option>
                     </select>
                     <span class="me-2">Color:</span>
-                    <select class="form-select" aria-label="Select color" th:field="*{productColor}">
+                    <select class="form-select" aria-label="Select color" >
                         <option value="white">White</option>
                         <option value="black">Black</option>
                         <option value="beige">Beige</option>
                         <option value="gray">Gray</option>
                     </select>
                 </div>
-                <form th:action="@{/handlesubmit}" method="post" class="d-flex" >
-                    <input type="hidden" th:field="*{productSize}" />
-                    <input type="hidden" th:field="*{productColor}" />
-                    <input class="form-control text-center me-3" th:field="*{productQuantity}" id="inputQuantity" type="num" name="quantity" value="1" style="max-width: 3rem" />
+                <form  class="d-flex" >
+                    <input type="hidden" />
+                    <input type="hidden"  />
+                    <input class="form-control text-center me-3"  id="inputQuantity" type="num" name="quantity" value="1" style="max-width: 3rem" />
                     <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart

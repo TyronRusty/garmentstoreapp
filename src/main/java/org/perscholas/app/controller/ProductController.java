@@ -8,14 +8,8 @@ import org.perscholas.app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @Slf4j
@@ -38,7 +32,7 @@ public class ProductController {
         return "form";
     }
     @PostMapping("/processing")
-    public String updateOrCreateUser(@ModelAttribute("product")Product product, Model model, @RequestParam("file") MultipartFile file) throws Exception {
+    public String updateOrCreateProduct(@ModelAttribute("product")Product product, Model model, @RequestParam("file") MultipartFile file) throws Exception {
         Product fromDB = productService.createOrUpdate(product);
         model.addAttribute("product",fromDB);
         model.addAttribute("message", "success");
@@ -46,5 +40,11 @@ public class ProductController {
 
 
         return "formtest";
+    }
+    @GetMapping("/deleteproduct/{productId}")
+    public  String deleteProduct(@PathVariable("productId") int productId) throws Exception {
+        log.debug("Value of the string" + String.valueOf(productId));
+        productService.deleteProduct(productId);
+        return "redirect:/dashboard";
     }
 }

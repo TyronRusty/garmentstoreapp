@@ -35,6 +35,10 @@ public class HomeController {
         return "detailblackt";
     }
 
+    @GetMapping("/detailwhitetee")
+    public String getDetailWhiteTee(){
+        return "detailwhitetee";
+    }
 
 
 }
