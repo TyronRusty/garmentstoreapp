@@ -40,6 +40,37 @@ public class Product {
     @NonNull
     String productDescription;
 
+    @OneToOne(mappedBy = "product", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
+     Image image;
+
+    public Product(@NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull int productQuantity) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.productQuantity = productQuantity;
+    }
+
+    public Product(@NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.productSKU = productSKU;
+        this.productQuantity = productQuantity;
+        this.productDescription = productDescription;
+    }
+
+    public Product(@NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription, Image image) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.productSKU = productSKU;
+        this.productQuantity = productQuantity;
+        this.productDescription = productDescription;
+        this.image = image;
+    }
 
     public Product(@NonNull int productId, @NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription) {
         this.productId = productId;
@@ -50,6 +81,24 @@ public class Product {
         this.productSKU = productSKU;
         this.productQuantity = productQuantity;
         this.productDescription = productDescription;
+    }
+
+    public Product(@NonNull int productId, @NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription, Image image, Set<CartItem> cartItems) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productSize = productSize;
+        this.productColor = productColor;
+        this.productSKU = productSKU;
+        this.productQuantity = productQuantity;
+        this.productDescription = productDescription;
+        this.image = image;
+        this.cartItems = cartItems;
+    }
+
+    public Product(@NonNull String productName, @NonNull double productPrice) {
+        this.productName = productName;
+        this.productPrice = productPrice;
     }
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.PERSIST, orphanRemoval = true)

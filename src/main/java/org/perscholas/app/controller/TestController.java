@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.perscholas.app.dao.ProductRepoI;
 import org.perscholas.app.models.Product;
 import org.perscholas.app.models.user;
+import org.perscholas.app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,19 +20,22 @@ import java.util.List;
 @Controller
 @Slf4j
 public class TestController {
-ProductRepoI productRepoI;
+
     @Autowired
-    public TestController(ProductRepoI productRepoI) {
-        this.productRepoI = productRepoI;
-    }
-List<Product>productList =new ArrayList<>();
+    ProductRepoI productRepoI;
+    ProductService productService;
+
+
     // get map for test only
-  /*  @GetMapping("/tested")
+   @GetMapping("/tested")
     public String getTested(Model model){
-        List<Product> productList = productRepoI.findAll();
-        model.addAttribute("product" , productList);
-        return "tested";
-    } */
+       List<Product>productList =productRepoI.findAll();
+       model.addAttribute("products" , productList);
+        return "anothertest";
+    }
+
+    // get map for test only
+
   /*  @GetMapping("/detailblackt")
     public String gettestor(Model model){
         model.addAttribute("product" ,new Product());
@@ -41,12 +45,12 @@ List<Product>productList =new ArrayList<>();
         model.addAttribute("ColorList",ColorList);
         return "detailblackt";
     }*/
-    @PostMapping("/handlesubmit")
+   /* @PostMapping("/handlesubmit")
         public String handleSubmit(Product product){
         System.out.println(product);
         productList.add(product);
         return "testor";
-    }
+    }*/
     @GetMapping("/register")
     public String showForm(Model model) {
         user user = new user();

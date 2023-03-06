@@ -30,18 +30,11 @@ public class HomeController {
     public String getShoes(){
         return "shoes";
     }
-
-
     @GetMapping("/detailblackt")
-    public String homeDetail(){
+    public String getDetail(){
         return "detailblackt";
     }
 
-    @GetMapping("/search")
-    public String search(@Param("keyword") String keyword){
-        System.out.println("keyword: " +keyword);
 
-        return "search_result";
 
-    }
 }
