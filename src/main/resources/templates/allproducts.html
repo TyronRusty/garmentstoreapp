@@ -104,14 +104,17 @@
                   </td>
 
                   <th scope="row" th:text="${product.productId}">1</th>
-                  <td th:text="${product.productName}">Mark</td>
-                  <td th:text="${product.productPrice}">Otto</td>
-                  <td th:text="${product.productSize}">@mdo</td>
-                  <td th:text="${product.productColor}">Otto</td>
-             
-                  <td th:text="${product.productQuantity}">@mdo</td>
-                  <td th:text="${product.productDescription}">@mdo</td>
-                  <td><button class="btn btn-secondary" type="submit">Edit</button></td>
+                  <td th:text="${product.productName}"></td>
+                  <td th:text="${product.productPrice}"></td>
+                  <td th:text="${product.productSize}"></td>
+                  <td th:text="${product.productColor}"></td>
+                  <td th:text="${product.productQuantity}"></td>
+                  <td th:text="${product.productDescription}"></td>
+                  <td>
+                
+                  <a th:href="@{/UpdateProduct(productId=${product.productId})}"> <button class="btn btn-secondary" >Edit</button>  </a> 
+                </td>
+                 
                   <td>
                    <a th:href="@{/deleteproduct/}+${product.productId}"> <button type="button" class="btn btn-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

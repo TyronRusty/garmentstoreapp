@@ -74,7 +74,7 @@
         <div class="row gx-4 justify-content-center">
           <div class="col-lg-8">
             <h2>User Form</h2>
-            <form th:action="@{/processing}" method="post" enctype="multipart/form-data" accept="image/png, image/jpeg">
+            <form th:action="@{/processing}" th:object="${product}" method="post" enctype="multipart/form-data" accept="image/png, image/jpeg">
               <div class="form-group">
                 <label for="id">ID</label>
                 <input
@@ -82,7 +82,8 @@
                   class="form-control"
                   id="id"
                   placeholder="ID auto generated"
-                  th:field="*{product.productId}"
+                  th:field="*{productId}"
+                  value=""
                   disabled
                 />
               </div>
@@ -92,7 +93,8 @@
                   type="text"
                   class="form-control"
                   id="productName"
-                  th:field="*{product.productName}"
+                  th:field="*{productName}"
+                  value=""
                 />
               </div>
               <div class="form-group">
@@ -101,7 +103,8 @@
                   type="text"
                   class="form-control"
                   id="productPrice"
-                  th:field="*{product.productPrice}"
+                  th:field="*{productPrice}"
+                  value=""
                 />
               </div>
               <div class="form-group">
@@ -110,7 +113,8 @@
                   type="text"
                   class="form-control"
                   id="productSize"
-                  th:field="*{product.productSize}"
+                  th:field="*{productSize}"
+                  value=""
                 />
               </div>
               <div class="form-group">
@@ -119,7 +123,8 @@
                   type="text"
                   class="form-control"
                   id="productColor"
-                  th:field="*{product.productColor}"
+                  th:field="*{productColor}"
+                  value=""
                 />
               </div>
 
@@ -129,7 +134,8 @@
                   type="text"
                   class="form-control"
                   id="productQuantity"
-                  th:field="*{product.productQuantity}"
+                  th:field="*{productQuantity}"
+                  value=""
                 />
               </div>
               <div class="form-group">
@@ -138,7 +144,8 @@
                   type="text"
                   class="form-control"
                   id="productDescription"
-                  th:field="*{product.productDescription}"
+                  th:field="*{productDescription}"
+                  value=""
                 />
               </div>
            
@@ -149,6 +156,7 @@
                         class="form-control"
                         id="file"
                         name="file"
+                        value=""
 
                 />
               </div>

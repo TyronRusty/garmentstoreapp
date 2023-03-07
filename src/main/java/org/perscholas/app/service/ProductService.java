@@ -18,7 +18,9 @@ public class ProductService {
     @Autowired
     ProductRepoI productRepoI;
 
-
+    public List<Product> search(String keyword){
+        return productRepoI.search(keyword);
+    }
     public List<Product>ListAll(){
 
         return (List<Product>) productRepoI.findAll();
@@ -48,5 +50,11 @@ public class ProductService {
             throw new Exception("Can't find the product with id " + productId);
         }
     }
+
+    public Product findProductById(int productId) {
+return productRepoI.findById(productId).get();
+
+    }
+
 
 }
