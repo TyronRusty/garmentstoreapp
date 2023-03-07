@@ -7,7 +7,6 @@ import org.perscholas.app.dao.ImageRepoI;
 import org.perscholas.app.dao.ProductRepoI;
 import org.perscholas.app.models.Image;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
@@ -19,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -85,4 +85,8 @@ public class ImageService {
             throw new RuntimeException("Error: " + e.getMessage());
         }
     }
+
+//    public getImageUrl(String productName) {
+//        return imageRepoI.findByName(productName).get();
+//    }
 }

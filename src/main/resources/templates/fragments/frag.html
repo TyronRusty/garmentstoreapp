@@ -60,8 +60,8 @@
             </ul>
             
             <div class="d-flex flex-wrap justify-content-end align-items-center">
-              <form class="d-flex flex-grow-1 justify-content-end" role="search">
-                <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" style=" margin-top: 4%; height: 31px;">
+              <form class="d-flex flex-grow-1 justify-content-end" role="search" th:action="@{/search}">
+                <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" name="keyword"style=" margin-top: 4%; height: 31px;">
                 <button class="btn btn-outline-dark btn-sm" type="submit">SEARCH</button>
               </form>
               <button type="button" class="btn btn-outline-dark btn-sm ms-2">

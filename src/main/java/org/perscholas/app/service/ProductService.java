@@ -3,6 +3,7 @@ package org.perscholas.app.service;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.app.dao.ProductRepoI;
+import org.perscholas.app.dto.ProductDTO;
 import org.perscholas.app.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,6 +56,7 @@ public class ProductService {
 return productRepoI.findById(productId).get();
 
     }
+
 
 
 }

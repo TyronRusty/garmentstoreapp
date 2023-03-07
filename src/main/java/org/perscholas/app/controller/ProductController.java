@@ -67,10 +67,34 @@ public class ProductController {
     @GetMapping("/UpdateProduct")
     public ModelAndView UpdateForm(@RequestParam Integer productId) {
         ModelAndView mav = new ModelAndView("form");
-        Product product = productService.findProductById(productId);
+        Product product = productRepoI.save(productService.findProductById(productId));
+
         mav.addObject("product", product);
+
         return mav;
     }
+
+//    @PostMapping("/updateProduct")
+//    public String updateProduct(@ModelAttribute("product") Product product, Model model, @RequestParam("file") MultipartFile file) throws Exception {
+//        Product fromDB = productService.findProductById(product.getProductId());
+//        if (fromDB != null) {
+//            // Update the existing product with the new attributes
+//            fromDB.setProductName(product.getProductName());
+//            fromDB.setProductPrice(product.getProductPrice());
+//            fromDB.setProductDescription(product.getProductDescription());
+//            // ... update other attributes as needed
+//            productService.createOrUpdate(fromDB);
+//        } else {
+//            // The product does not exist in the database
+//            throw new Exception("Product not found");
+//        }
+//        model.addAttribute("product", fromDB);
+//        model.addAttribute("message", "success");
+//        imageService.save(file, fromDB.getProductName());
+//        return "form";
+//    }
+
+
 
 }
 
