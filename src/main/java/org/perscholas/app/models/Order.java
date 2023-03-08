@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Hibernate;
 
 import java.util.Date;
 import java.util.LinkedHashSet;
@@ -38,7 +37,7 @@ public class Order {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private MyUser myUser;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
@@ -49,11 +48,11 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return orderId == order.orderId && productId == order.productId && Double.compare(order.totalPrice, totalPrice) == 0 && orderDate.equals(order.orderDate) && shippingAddress.equals(order.shippingAddress) && Objects.equals(customer, order.customer) && Objects.equals(cartItems, order.cartItems);
+        return orderId == order.orderId && productId == order.productId && Double.compare(order.totalPrice, totalPrice) == 0 && orderDate.equals(order.orderDate) && shippingAddress.equals(order.shippingAddress) && Objects.equals(myUser, order.myUser) && Objects.equals(cartItems, order.cartItems);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, productId, orderDate, totalPrice, shippingAddress, customer, cartItems);
+        return Objects.hash(orderId, productId, orderDate, totalPrice, shippingAddress, myUser, cartItems);
     }
 }

@@ -47,7 +47,7 @@ public class CartItem {
     @ToString.Exclude
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private MyUser myUser;
 
     @Override
     public boolean equals(Object o) {

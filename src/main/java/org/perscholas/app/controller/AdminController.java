@@ -1,40 +1,40 @@
 package org.perscholas.app.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.perscholas.app.dao.CartItemRepoI;
-import org.perscholas.app.dao.CustomerRepoI;
+import org.perscholas.app.dao.MyUserRepoI;
 import org.perscholas.app.dao.ImageRepoI;
 import org.perscholas.app.dao.ProductRepoI;
-import org.perscholas.app.models.Customer;
+import org.perscholas.app.models.MyUser;
 import org.perscholas.app.models.Product;
-import org.perscholas.app.service.CustomerService;
+import org.perscholas.app.service.MyUserService;
 import org.perscholas.app.service.ImageService;
 import org.perscholas.app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 @Slf4j
 public class AdminController {
     ProductService productService;
     ProductRepoI productRepoI;
     ImageRepoI imageRepoI;
     ImageService imageService;
-    CustomerService customerService;
-    CustomerRepoI customerRepoI;
+    MyUserService myUserService;
+    MyUserRepoI myUserRepoI;
     @Autowired
-    public AdminController(ProductService productService, ProductRepoI productRepoI, ImageRepoI imageRepoI, ImageService imageService, CustomerService customerService, CustomerRepoI customerRepoI) {
+    public AdminController(ProductService productService, ProductRepoI productRepoI, ImageRepoI imageRepoI, ImageService imageService, MyUserService myUserService, MyUserRepoI myUserRepoI) {
         this.productService = productService;
         this.productRepoI = productRepoI;
         this.imageRepoI = imageRepoI;
         this.imageService = imageService;
-        this.customerService = customerService;
-        this.customerRepoI = customerRepoI;
+        this.myUserService = myUserService;
+        this.myUserRepoI = myUserRepoI;
     }
     @GetMapping("/products")
     public String listAll(Model model){
@@ -53,25 +53,19 @@ public class AdminController {
 
         model.addAttribute("product", allProducts);
 
-
-
-
         return "allproducts";
     }
 
 
 
-    @GetMapping("Customer")
+    @GetMapping("MyUser")
     public String SeeCustomer(Model model){
-        List<Customer> allCustomers = customerRepoI.findAll();
+        List<MyUser> allMyUsers = myUserRepoI.findAll();
 
         // allUsers.forEach(myUser -> log.debug("url form dashboard controller: " + myUser.getImage().getUrl()));
 
-        model.addAttribute("customer", allCustomers);
+        model.addAttribute("user", allMyUsers);
 
-
-
-
-        return "allCustomers";
+        return "allMyUsers";
     }
 }
