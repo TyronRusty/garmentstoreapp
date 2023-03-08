@@ -46,7 +46,11 @@ public class MySecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/","/index","/CSS/**", "/JS/**", "/IMG/**","/video/**", "/assets/**", "/login/**").permitAll()
+                        .requestMatchers("/","/index","/About","/Beigehoodiedetail","/Tshirt","/shoes","/hoodies"
+                                ,"/blackhoodiedetail","/detailblackkt","/detailwhitetee","/grayhoodiedetail"
+                                ,"/hoodie","/search_result","/shoes","/vansallblack","/vansoldskool"
+                                ,"/vansallskoolblue","/whitehoodiedetail"
+                                ,"/CSS/**", "/JS/**", "/IMG/**","/video/**", "/assets/**", "/login/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER","ADMIN")
                         .anyRequest().authenticated()

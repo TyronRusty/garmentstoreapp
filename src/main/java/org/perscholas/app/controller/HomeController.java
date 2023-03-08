@@ -40,5 +40,8 @@ public class HomeController {
         return "detailwhitetee";
     }
 
-
+    @GetMapping("/login")
+    public String loginPage(){return "login";}
+    @GetMapping("/allproducts")
+    public String productPage(){return "allproducts";}
 }

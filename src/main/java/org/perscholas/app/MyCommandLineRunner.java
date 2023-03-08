@@ -90,10 +90,15 @@ public class MyCommandLineRunner implements CommandLineRunner {
         myUserRepoI.save(customer4);
         myUserRepoI.save(customer5);
 
-        authGroupRepoI.save(new AuthGroup("johndoe@gmail.com","ROLE_USER"));
-        authGroupRepoI.save(new AuthGroup("johndoe@gmail.com","ROLE_ADMIN"));
+        AuthGroup authGroup1 = new AuthGroup ("johndoe@gmail.com","ROLE_USER");
+        AuthGroup authGroup2 = new AuthGroup ("johndoe@gmail.com","ROLE_ADMIN");
 
-        authGroupRepoI.save(new AuthGroup("janesmith@gmail.com","ROLE_USER"));
+        AuthGroup authGroup3= new AuthGroup ("janesmith@gmail.com","ROLE_USER");
+
+        authGroupRepoI.save(authGroup1);
+        authGroupRepoI.save(authGroup2);
+        authGroupRepoI.save(authGroup3);
+
 
 
 
