@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
   <head>
     <link rel="shortcut icon" th:href="@{/IMG/images1.png}" width="16px" height="16px"type="image/x-icon">
 
@@ -54,7 +54,7 @@
           </ul>
           
           
-          <a style="text-decoration: none; font-size: 110% ;font-weight: bold;" class="col align-self-center text-center  text-dark lh-1 py-3" href="index.html">THE GARMENT STORE</a>
+          <a style="text-decoration: none; font-size: 110% ;font-weight: bold;" class="col align-self-center text-center  text-dark lh-1 py-3" href="{@/index}">THE GARMENT STORE</a>
 
    
         </div>
@@ -83,6 +83,7 @@
                   id="id"
                   placeholder="ID auto generated"
                   th:field="*{productId}"
+                  name ="productId"
                   value=""
                   disabled
                 />
@@ -93,8 +94,9 @@
                   type="text"
                   class="form-control"
                   id="productName"
-                  th:field="*{productName}"
-                  value=""
+                  th :field="*{productName}"
+                  value="productName"
+                  name="productName"
                 />
               </div>
               <div class="form-group">
@@ -129,7 +131,7 @@
               </div>
 
               <div class="form-group">
-                <label for="productSKU">Quantity</label>
+                <label for="productQuantity">Quantity</label>
                 <input
                   type="text"
                   class="form-control"

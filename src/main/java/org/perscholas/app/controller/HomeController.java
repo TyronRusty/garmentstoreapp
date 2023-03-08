@@ -42,6 +42,14 @@ public class HomeController {
 
     @GetMapping("/login")
     public String loginPage(){return "login";}
-    @GetMapping("/allproducts")
+    @GetMapping("/dashboard")
     public String productPage(){return "allproducts";}
+
+    @GetMapping("/form")
+    public String formPage(){return "form";}
+
+    @GetMapping("/403")
+    public String access(){
+        return "403";
+    }
 }

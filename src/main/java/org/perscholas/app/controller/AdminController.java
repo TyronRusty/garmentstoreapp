@@ -36,14 +36,7 @@ public class AdminController {
         this.myUserService = myUserService;
         this.myUserRepoI = myUserRepoI;
     }
-    @GetMapping("/products")
-    public String listAll(Model model){
 
-
-        List<Product> productList = productRepoI.findAll();
-        model.addAttribute("product" , productList);
-        return "tested";
-    }
 
     @GetMapping("dashboard")
     public String dash(Model model){

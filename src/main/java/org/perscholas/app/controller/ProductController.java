@@ -1,9 +1,12 @@
 package org.perscholas.app.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.perscholas.app.dao.ImageRepoI;
+import org.perscholas.app.dao.MyUserRepoI;
 import org.perscholas.app.dao.ProductRepoI;
 import org.perscholas.app.models.Product;
 import org.perscholas.app.service.ImageService;
+import org.perscholas.app.service.MyUserService;
 import org.perscholas.app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,26 +14,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
+@RequestMapping("/admin")
 @Controller
 @Slf4j
 public class ProductController {
 
-    private final ProductRepoI productRepoI;
-    private final ProductService productService;
-    private final ImageService imageService;
-
-    @Autowired
-    public ProductController(ProductRepoI productRepoI, ProductService productService, ImageService imageService) {
-        this.productRepoI = productRepoI;
+    ProductService productService;
+    ProductRepoI productRepoI;
+    ImageRepoI imageRepoI;
+    ImageService imageService;
+    MyUserService myUserService;
+    MyUserRepoI myUserRepoI;
+@Autowired
+    public ProductController(ProductService productService, ProductRepoI productRepoI, ImageRepoI imageRepoI, ImageService imageService, MyUserService myUserService, MyUserRepoI myUserRepoI) {
         this.productService = productService;
+        this.productRepoI = productRepoI;
+        this.imageRepoI = imageRepoI;
         this.imageService = imageService;
+        this.myUserService = myUserService;
+        this.myUserRepoI = myUserRepoI;
     }
 
     @GetMapping("/form")
     public String userForm(Model model) {
         model.addAttribute("product", new Product());
-       // model.addAttribute("pageTitle","add new product");
+
 
         return "form";
     }
@@ -74,25 +82,7 @@ public class ProductController {
         return mav;
     }
 
-//    @PostMapping("/updateProduct")
-//    public String updateProduct(@ModelAttribute("product") Product product, Model model, @RequestParam("file") MultipartFile file) throws Exception {
-//        Product fromDB = productService.findProductById(product.getProductId());
-//        if (fromDB != null) {
-//            // Update the existing product with the new attributes
-//            fromDB.setProductName(product.getProductName());
-//            fromDB.setProductPrice(product.getProductPrice());
-//            fromDB.setProductDescription(product.getProductDescription());
-//            // ... update other attributes as needed
-//            productService.createOrUpdate(fromDB);
-//        } else {
-//            // The product does not exist in the database
-//            throw new Exception("Product not found");
-//        }
-//        model.addAttribute("product", fromDB);
-//        model.addAttribute("message", "success");
-//        imageService.save(file, fromDB.getProductName());
-//        return "form";
-//    }
+
 
 
 
