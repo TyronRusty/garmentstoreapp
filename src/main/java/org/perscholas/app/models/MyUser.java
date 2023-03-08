@@ -1,9 +1,13 @@
 package org.perscholas.app.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -11,26 +15,30 @@ import java.util.Set;
 
 
 @Entity
+@AllArgsConstructor
 @Slf4j
 @NoArgsConstructor
 @Table(name="users")
-@Setter @Getter @ToString @EqualsAndHashCode
+@Getter @ToString @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MyUser {
     @Id
     @NonNull
+    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     @NonNull
+    @NotBlank( message = "can't be blank")
     String firstName;
     @NonNull
     String lastName;
     @NonNull
+    @Email( message = "can't be blank")
+    @Column(unique = true)
     String email;
     @NonNull
     String phone;
-    @NonNull
-    String password;
+
     @NonNull
     String address;
     @NonNull
@@ -39,7 +47,12 @@ public class MyUser {
     String state;
     @NonNull
     int zipCode;
-
+    @Setter(AccessLevel.NONE)
+    @NonNull @NotBlank(message = "can't be blank") @Size(min=3, message = "not less than 3 characters")
+    String password;
+    public String setPassword(String password) {
+        return this.password = new BCryptPasswordEncoder().encode(password);
+    }
     @ToString.Exclude
     @OneToMany(mappedBy = "myUser", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
     private Set<Order> orders = new LinkedHashSet<>();
@@ -50,7 +63,7 @@ public class MyUser {
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
-        this.password = password;
+        this.password =  setPassword(password);
         this.address = address;
         this.city = city;
         this.state = state;
@@ -61,7 +74,7 @@ public class MyUser {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        this.password =  setPassword(password);
     }
 
     public MyUser(@NonNull int id, @NonNull String firstName, @NonNull String lastName, @NonNull String email, @NonNull String password) {
@@ -69,7 +82,7 @@ public class MyUser {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        this.password =  setPassword(password);
     }
 
     @Override

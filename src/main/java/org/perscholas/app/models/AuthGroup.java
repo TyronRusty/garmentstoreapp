@@ -6,16 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import lombok.extern.slf4j.Slf4j;
+
 
 @Entity
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Getter
-@Setter
-@ToString
+@AllArgsConstructor
+@Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Slf4j
 public class AuthGroup {
 
     @Id
