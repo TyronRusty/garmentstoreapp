@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <link rel="shortcut icon" th:href="@{/IMG/images1.png}" width="16px" height="16px"type="image/x-icon">
 
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white">
       <div class="container-fluid">
         
-        <a class="navbar-brand" th:href="@{/index}">
+        <a class="navbar-brand" href="@{index}">
           <img th:src="@{/IMG/images.svg}" width="30" height="30" alt="">
         </a>
         
@@ -54,7 +54,7 @@
           </ul>
           
           
-          <a style="text-decoration: none; font-size: 110% ;font-weight: bold;" class="col align-self-center text-center  text-dark lh-1 py-3" href="{@/index}">THE GARMENT STORE</a>
+          <a style="text-decoration: none; font-size: 110% ;font-weight: bold;" class="col align-self-center text-center  text-dark lh-1 py-3" href="index.html">THE GARMENT STORE</a>
 
    
         </div>
@@ -83,7 +83,6 @@
                   id="id"
                   placeholder="ID auto generated"
                   th:field="*{productId}"
-                  name ="productId"
                   value=""
                   disabled
                 />
@@ -94,9 +93,8 @@
                   type="text"
                   class="form-control"
                   id="productName"
-                  th :field="*{productName}"
-                  value=""
-                  name="productName"
+                  th:field="*{productName}"
+                  value="${product.productName}"
                 />
               </div>
               <div class="form-group">
@@ -106,7 +104,7 @@
                   class="form-control"
                   id="productPrice"
                   th:field="*{productPrice}"
-                  value=""
+                  value="${product.productPrice}"
                 />
               </div>
               <div class="form-group">
@@ -116,7 +114,7 @@
                   class="form-control"
                   id="productSize"
                   th:field="*{productSize}"
-                  value=""
+                  value="${product.productSize}"
                 />
               </div>
               <div class="form-group">
@@ -126,18 +124,18 @@
                   class="form-control"
                   id="productColor"
                   th:field="*{productColor}"
-                  value=""
+                  value="${production.productColor}"
                 />
               </div>
 
               <div class="form-group">
-                <label for="productQuantity">Quantity</label>
+                <label for="productSKU">Quantity</label>
                 <input
                   type="text"
                   class="form-control"
                   id="productQuantity"
                   th:field="*{productQuantity}"
-                  value=""
+                  value="${production.productQuantity}"
                 />
               </div>
               <div class="form-group">
@@ -147,7 +145,7 @@
                   class="form-control"
                   id="productDescription"
                   th:field="*{productDescription}"
-                  value=""
+                  value="${production.productDescription}"
                 />
               </div>
            
@@ -158,10 +156,18 @@
                         class="form-control"
                         id="file"
                         name="file"
-                        value=""
+                        
 
                 />
+            
               </div>
+
+
+              <!-- <div th:if="${product.image} != null">
+                <a th:href="@{${product.image.url}}" >
+              <img th:src="@{${product.image.url}}" class="img-thumbnail">
+                </a>
+            </div> -->
 
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

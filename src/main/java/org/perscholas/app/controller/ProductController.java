@@ -14,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-@RequestMapping("/admin")
 @Controller
 @Slf4j
 public class ProductController {
@@ -62,25 +61,42 @@ public class ProductController {
         return "redirect:/dashboard";
     }
 
-    @GetMapping("/editproduct/{productId}")
-    public String editProduct(@PathVariable("productId") int productId ,Model model) {
-        Product product = productService.findProductById(productId);
-        model.addAttribute("product",product);
-   //     model.addAttribute("pageTitle","Edit  product (Id :"+productId+")");
-       return  "from" ;
+//    @GetMapping("/editproduct/{productId}")
+//    public String editProduct(@PathVariable("productId") int productId ,Model model) {
+//        Product product = productService.findProductById(productId);
+//        model.addAttribute("product",product);
+//   //     model.addAttribute("pageTitle","Edit  product (Id :"+productId+")");
+//       return  "from" ;
+//
+//
+//    }
 
+    @GetMapping("/UpdateProduct/{productId}")
+    public ModelAndView UpdateForm(@PathVariable (name ="productId") int productId) {
+        ModelAndView mav = new ModelAndView("updateproduct");
+        Product product = productRepoI.findById(productId).get();
+        product.setProductName(product.getProductName());
 
-    }
-
-    @GetMapping("/UpdateProduct")
-    public ModelAndView UpdateForm(@RequestParam Integer productId) {
-        ModelAndView mav = new ModelAndView("form");
-        Product product = productRepoI.save(productService.findProductById(productId));
-
+        product.setProductPrice(product.getProductPrice());
+        product.setProductSize(product.getProductSize());
+        product.setProductColor(product.getProductColor());
+        product.setProductQuantity(product.getProductQuantity());
+        product.setProductDescription(product.getProductDescription());
+        productRepoI.save(product);
         mav.addObject("product", product);
 
         return mav;
     }
+//   @GetMapping("/UpdateProduct/{productId}")
+//    public String UpdateProducts(@PathVariable(name ="productId") int productId,Model model){
+//
+//    model.addAttribute("product",productRepoI.findByProductId(productId));
+//    return "newpage";
+//
+//
+//}
+
+
 
 
 

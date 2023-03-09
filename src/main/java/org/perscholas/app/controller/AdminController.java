@@ -14,12 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 @Slf4j
+@SessionAttributes(value = {"userLoggedIn"})
 public class AdminController {
     ProductService productService;
     ProductRepoI productRepoI;
@@ -61,5 +62,6 @@ public class AdminController {
 
         return "allMyUsers";
     }
+
 
 }

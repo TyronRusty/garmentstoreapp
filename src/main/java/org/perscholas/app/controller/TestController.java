@@ -27,12 +27,12 @@ public class TestController {
 
 
     // get map for test only
-   @GetMapping("/tested")
-    public String getTested(Model model){
-       List<Product>productList =productRepoI.findAll();
-       model.addAttribute("products" , productList);
-        return "anothertest";
-    }
+//   @GetMapping("/tested")
+//    public String getTested(Model model){
+//       List<Product>productList =productRepoI.findAll();
+//       model.addAttribute("products" , productList);
+//        return "anothertest";
+//    }
 
     // get map for test only
 

@@ -27,8 +27,11 @@ public class ProductService {
     }
 
     public Product createOrUpdate(Product product) {
-        if (productRepoI.findByproductName(product.getProductName()).isPresent()) {
-            Product originalProduct = productRepoI.findByproductName(product.getProductName()).get();
+        if (productRepoI.findByProductId(product.getProductId()).isPresent()) {
+            log.debug("product id" +product.getProductId()+"exist");
+
+            Product originalProduct = productRepoI.findByProductId(product.getProductId()).get();
+            originalProduct.setProductName(product.getProductName());
             originalProduct.setProductPrice(product.getProductPrice());
             originalProduct.setProductSize(product.getProductSize());
             originalProduct.setProductColor(product.getProductColor());

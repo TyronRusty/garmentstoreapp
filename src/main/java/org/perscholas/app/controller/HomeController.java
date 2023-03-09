@@ -39,14 +39,15 @@ public class HomeController {
     public String getDetailWhiteTee(){
         return "detailwhitetee";
     }
-
+    @GetMapping("/blackhoodiedetail")
+    public String getDetailBlackHoodie(){
+        return "blackhoodiedetail";
+    }
     @GetMapping("/login")
     public String loginPage(){return "login";}
-    @GetMapping("/dashboard")
-    public String productPage(){return "allproducts";}
 
-    @GetMapping("/form")
-    public String formPage(){return "form";}
+
+
 
     @GetMapping("/403")
     public String access(){

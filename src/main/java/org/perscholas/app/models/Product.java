@@ -51,6 +51,14 @@ public class Product {
         this.productQuantity = productQuantity;
     }
 
+    public Product(@NonNull int productId, @NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productSize = productSize;
+        this.productColor = productColor;
+    }
+
     public Product(@NonNull String productName, @NonNull double productPrice, @NonNull String productSize, @NonNull String productColor, @NonNull String productSKU, @NonNull int productQuantity, @NonNull String productDescription) {
         this.productName = productName;
         this.productPrice = productPrice;

@@ -47,11 +47,11 @@ public class MySecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/","/index","/About","/Beigehoodiedetail","/Tshirt","/shoes","/hoodies"
-                                ,"/blackhoodiedetail","/detailblackt","/detailwhitetee","/form","/grayhoodiedetail"
+                                ,"/blackhoodiedetail","/detailblackt","/detailwhitetee","/grayhoodiedetail"
                                 ,"/hoodie","/search_result","/shoes","/vansallblack","/vansoldskool"
                                 ,"/vansallskoolblue","/whitehoodiedetail"
                                 ,"/CSS/**", "/JS/**", "/IMG/**","/video/**", "/assets/**", "/login/**").permitAll()
-                        .requestMatchers("/admin/**" ,"/dashboard","/form","/About","/dashboard/form" ,"/processing").hasRole("ADMIN")
+                        .requestMatchers("/admin/**" ,"/dashboard","/form","/updateproduct","/About","/dashboard/form" ,"/processing").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER","ADMIN")
                         .anyRequest().authenticated()
                 )

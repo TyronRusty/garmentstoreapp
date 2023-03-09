@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface ProductRepoI extends JpaRepository<Product, Integer> {
  Optional<Product> findByproductName(String productName);
-
+Optional<Product>findByProductId(int productId);
  @Query(value ="SELECT * FROM products WHERE "+"MATCH(product_name,product_description,product_color)"+"AGAINST(?1)"
          ,nativeQuery = true)
  public List<Product> search (String keyword);
