@@ -1,7 +1,9 @@
 package org.perscholas.app;
 
 import org.junit.jupiter.api.Test;
+import org.perscholas.app.dao.MyUserRepoI;
 import org.perscholas.app.dao.ProductRepoI;
+import org.perscholas.app.models.MyUser;
 import org.perscholas.app.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -16,8 +18,8 @@ public class ProductRepoTest {
 
     @Autowired
     private ProductRepoI productRepoI;
-
-
+    @Autowired
+    private MyUserRepoI myUserRepoI;
 
 
     @Test
@@ -26,6 +28,9 @@ public class ProductRepoTest {
 
         assertNotNull(product);
     }
-
-
+@Test
+public void testGetUserById(){
+    MyUser myUser = myUserRepoI.findById(4).get();
+    assertNotNull(myUser);
+}
 }

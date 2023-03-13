@@ -1,5 +1,6 @@
 package org.perscholas.app.controller;
 
+import ch.qos.logback.core.CoreConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.app.dao.ImageRepoI;
 import org.perscholas.app.dao.MyUserRepoI;
@@ -71,21 +72,28 @@ public class ProductController {
 //
 //    }
 
+    @PostMapping("/newprocess")
+    public String updateForms(@ModelAttribute ("product")Product product) {
+
+
+        log.debug("===================================this is id" +product.getProductId());
+
+        productService.createOrUpdate(product);
+
+
+
+
+        return "redirect:/dashboard";
+    }
+
     @GetMapping("/UpdateProduct/{productId}")
-    public ModelAndView UpdateForm(@PathVariable (name ="productId") int productId) {
-        ModelAndView mav = new ModelAndView("updateproduct");
-        Product product = productRepoI.findById(productId).get();
-        product.setProductName(product.getProductName());
+    public String updateForm(@PathVariable (name ="productId") int productId , Model model) {
 
-        product.setProductPrice(product.getProductPrice());
-        product.setProductSize(product.getProductSize());
-        product.setProductColor(product.getProductColor());
-        product.setProductQuantity(product.getProductQuantity());
-        product.setProductDescription(product.getProductDescription());
-        productRepoI.save(product);
-        mav.addObject("product", product);
 
-        return mav;
+        model.addAttribute("product",productRepoI.findById(productId));
+
+
+        return "updateproduct";
     }
 //   @GetMapping("/UpdateProduct/{productId}")
 //    public String UpdateProducts(@PathVariable(name ="productId") int productId,Model model){

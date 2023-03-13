@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
   <head>
     <link rel="shortcut icon" th:href="@{/IMG/images1.png}" width="16px" height="16px"type="image/x-icon">
 
@@ -13,7 +13,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>The Garment store product Registration</title>
+    <title>The Garment store admin dashboard</title>
     <link th:href="@{/CSS/mystyle.css}"  rel="stylesheet" type="text/css" >
   </head>
   <body>
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white">
       <div class="container-fluid">
         
-        <a class="navbar-brand" href="@{index}">
+        <a class="navbar-brand" th:href="@{/index}">
           <img th:src="@{/IMG/images.svg}" width="30" height="30" alt="">
         </a>
         
@@ -49,7 +49,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/dashboard}">dashboard</a>
+              <a class="nav-link" th:href="@{/form}">Add product</a>
             </li>
           </ul>
           
@@ -62,10 +62,14 @@
       </div>
     </nav>
 
+
     <!-- Header-->
-    <header class="bg-dark text-white">
+    <header class="bg-dark bg-gradient text-white">
       <div class="container px-4 text-center">
-        <h1 class="fw-bolder">PRODUCT REGISTRATION FORM</h1>
+        <h1 class="fw-bolder">Garment store admin portal</h1>
+        <p class="lead">
+          A list of product inventory!!
+        </p>
       </div>
     </header>
     <!-- About section-->
@@ -73,120 +77,64 @@
       <div class="container px-4">
         <div class="row gx-4 justify-content-center">
           <div class="col-lg-8">
-            <h2>User Form</h2>
-            <form th:action="@{/newprocess}" th:object="${product}" method="post" enctype="multipart/form-data" accept="image/png, image/jpeg">
-              <div class="form-group">
-                <label for="id">ID</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="id"
-                  placeholder="ID auto generated"
-                  th:field="*{productId}"
-                  value="${productId}"
-                  readonly
-                />
-              </div>
-              <div class="form-group">
-                <label for="productName">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="productName"
-                  th:field="*{productName}"
-                  value="${productName}"
-                />
-              </div>
-              <div class="form-group">
-                <label for="productPrice">Price</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="productPrice"
-                  th:field="*{productPrice}"
-                  value="${productPrice}"
-                />
-              </div>
-              <div class="form-group">
-                <label for="productSize">Size</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="productSize"
-                  th:field="*{productSize}"
-                  value="${productSize}"
-                />
-              </div>
-              <div class="form-group">
-                <label for="productColor">Color</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="productColor"
-                  th:field="*{productColor}"
-                  value="${productColor}"
-                />
-              </div>
+            <h2>product</h2>
+            <table class="table table-hover text-uppercase">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">first name</th>
+                  <th scope="col"> Last Name</th>
+                  <th scope="col">email</th>
+                  <th scope="col">adress</th>
+                  <th scope="col">city</th>
+             
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="myUser: ${myUser}">
 
-              <div class="form-group">
-                <label for="productSKU">Quantity</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="productQuantity"
-                  th:field="*{productQuantity}"
-                  value="${productQuantity}"
-                />
-              </div>
-              <div class="form-group">
-                <label for="productDescription">Description</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="productDescription"
-                  th:field="*{productDescription}"
-                  value="${productDescription}"
-                />
-              </div>
-           
-              <div class="form-group">
-                <label for="file"></label>
-                <input
-                        type="file"
-                        class="form-control"
-                        id="file"
-                        name="file"
-                        
+                  <th scope="row" th:text="${myUser.id}">1</th>
+                  <td th:text="${myUser.firstName}"></td>
+                  <td th:text="${myUser.lastName}"></td>
+                  <td th:text="${myUser.email}"></td>
+                  <td th:text="${myUser.address}"></td>
+                  <td th:text="${myUser.city}"></td>
+                 
+                   <td>
+                
+                  <a th:href="@{/updateuser/}+${myUser.id}"> <button class="btn btn-secondary" type="submit
+                    ">Edit</button>  </a> 
+                </td> 
+                 
+                  <td>
+                   <a th:href="@{/deleteuser/}+${myUser.id}"> <button type="button" class="btn btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+      <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+    </svg>
+                  </button> </a> 
+                   </td>
 
-                />
-            
-              </div>
+                 
 
-
-              <!-- <div th:if="${product.image} != null">
-                <a th:href="@{${product.image.url}}" >
-              <img th:src="@{${product.image.url}}" class="img-thumbnail">
-                </a>
-            </div> -->
-
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-            <div
-              class="alert-info"
-              th:if="${message}"
-              th:text="${message}"
-            ></div>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
+        <!-- ROW ENDS -->
+
+ 
+        <!-- ROW ENDS -->
       </div>
     </section>
     <!-- Services section-->
-
+   
     <!-- Contact section-->
-
+   
 
     <!-- Footer-->
-    
+   
   </body>
 </html>

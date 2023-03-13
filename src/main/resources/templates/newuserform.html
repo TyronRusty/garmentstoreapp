@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
   <head>
     <link rel="shortcut icon" th:href="@{/IMG/images1.png}" width="16px" height="16px"type="image/x-icon">
 
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white">
       <div class="container-fluid">
         
-        <a class="navbar-brand" href="@{index}">
+        <a class="navbar-brand" th:href="@{/index}">
           <img th:src="@{/IMG/images.svg}" width="30" height="30" alt="">
         </a>
         
@@ -54,7 +54,7 @@
           </ul>
           
           
-          <a style="text-decoration: none; font-size: 110% ;font-weight: bold;" class="col align-self-center text-center  text-dark lh-1 py-3" href="index.html">THE GARMENT STORE</a>
+          <a style="text-decoration: none; font-size: 110% ;font-weight: bold;" class="col align-self-center text-center  text-dark lh-1 py-3" href="{@/index}">THE GARMENT STORE</a>
 
    
         </div>
@@ -65,7 +65,7 @@
     <!-- Header-->
     <header class="bg-dark text-white">
       <div class="container px-4 text-center">
-        <h1 class="fw-bolder">PRODUCT REGISTRATION FORM</h1>
+        <h1 class="fw-bolder">WELCOME TO THE GARMENT</h1>
       </div>
     </header>
     <!-- About section-->
@@ -73,8 +73,8 @@
       <div class="container px-4">
         <div class="row gx-4 justify-content-center">
           <div class="col-lg-8">
-            <h2>User Form</h2>
-            <form th:action="@{/newprocess}" th:object="${product}" method="post" enctype="multipart/form-data" accept="image/png, image/jpeg">
+            <h2>User registration </h2>
+            <form th:action="@{/userprocessing}" th:object="${myUser}" method="post" >
               <div class="form-group">
                 <label for="id">ID</label>
                 <input
@@ -82,101 +82,90 @@
                   class="form-control"
                   id="id"
                   placeholder="ID auto generated"
-                  th:field="*{productId}"
-                  value="${productId}"
-                  readonly
-                />
+                  th:field="*{id}"
+                  name ="id"
+                  value="${id}"
+                  disabled
+                />                
               </div>
               <div class="form-group">
-                <label for="productName">Name</label>
+                <label for="firstName">First Name</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="productName"
-                  th:field="*{productName}"
-                  value="${productName}"
+                  placeholder="first name"
+
+                  th:field="*{firstName}"
+                  value="${firstName}"
                 />
               </div>
               <div class="form-group">
-                <label for="productPrice">Price</label>
+                <label for="lastName">Last Name</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="productPrice"
-                  th:field="*{productPrice}"
-                  value="${productPrice}"
+                  th:field="*{lastName}"
+                  value="${lastName}"
+                  placeholder="last name"
+
                 />
               </div>
               <div class="form-group">
-                <label for="productSize">Size</label>
+                <label for="email">Email</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="productSize"
-                  th:field="*{productSize}"
-                  value="${productSize}"
+                  th:field="*{email}"
+                  placeholder="email"
+
+                  value="${email}"
                 />
               </div>
               <div class="form-group">
-                <label for="productColor">Color</label>
+                <label for="address">Address</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="productColor"
-                  th:field="*{productColor}"
-                  value="${productColor}"
+                  th:field="*{address}"
+                  value="${address}"
+                  placeholder="adress"
+
                 />
               </div>
 
               <div class="form-group">
-                <label for="productSKU">Quantity</label>
+                <label for="city">City</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="productQuantity"
-                  th:field="*{productQuantity}"
-                  value="${productQuantity}"
+                  th:field="*{city}"
+                  value="${city}"
+                  placeholder="city"
+
                 />
               </div>
               <div class="form-group">
-                <label for="productDescription">Description</label>
+                <label for="password">Password</label>
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
-                  id="productDescription"
-                  th:field="*{productDescription}"
-                  value="${productDescription}"
+                  th:field="*{password}"
+                  placeholder="password"
+                  
+
+
                 />
               </div>
            
-              <div class="form-group">
-                <label for="file"></label>
-                <input
-                        type="file"
-                        class="form-control"
-                        id="file"
-                        name="file"
-                        
+          
 
-                />
-            
-              </div>
-
-
-              <!-- <div th:if="${product.image} != null">
-                <a th:href="@{${product.image.url}}" >
-              <img th:src="@{${product.image.url}}" class="img-thumbnail">
-                </a>
-            </div> -->
-
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" value="submit" class="btn btn-primary">Register</button>
             </form>
-
-            <div
+            <!-- <div
               class="alert-info"
               th:if="${message}"
-              th:text="${message}"
-            ></div>
+              th:text="${message}" 
+              ></div> -->
           </div>
         </div>
       </div>

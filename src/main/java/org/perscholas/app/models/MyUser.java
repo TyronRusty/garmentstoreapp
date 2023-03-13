@@ -15,25 +15,25 @@ import java.util.Set;
 
 
 @Entity
-@AllArgsConstructor
+
 @Slf4j
 @NoArgsConstructor
+@AllArgsConstructor
+@Setter
 @Table(name="users")
 @Getter @ToString @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MyUser {
     @Id
     @NonNull
-    @Setter
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     @NonNull
-    @NotBlank( message = "can't be blank")
     String firstName;
     @NonNull
     String lastName;
     @NonNull
-    @Email( message = "can't be blank")
     @Column(unique = true)
     String email;
     @NonNull
@@ -48,7 +48,7 @@ public class MyUser {
     @NonNull
     int zipCode;
     @Setter(AccessLevel.NONE)
-    @NonNull @NotBlank(message = "can't be blank") @Size(min=3, message = "not less than 3 characters")
+    @NonNull
     String password;
     public String setPassword(String password) {
         return this.password = new BCryptPasswordEncoder().encode(password);
@@ -56,6 +56,16 @@ public class MyUser {
     @ToString.Exclude
     @OneToMany(mappedBy = "myUser", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, orphanRemoval = true)
     private Set<Order> orders = new LinkedHashSet<>();
+
+    public MyUser(@NonNull int id, @NonNull String firstName, @NonNull String lastName, @NonNull String email, @NonNull String address, @NonNull String city, @NonNull String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.city = city;
+        this.password =  setPassword(password);
+    }
 
     public MyUser(@NonNull int id, @NonNull String firstName, @NonNull String lastName, @NonNull String email, @NonNull String phone, @NonNull String password, @NonNull String address, @NonNull String city, @NonNull String state, @NonNull int zipCode) {
         this.id = id;

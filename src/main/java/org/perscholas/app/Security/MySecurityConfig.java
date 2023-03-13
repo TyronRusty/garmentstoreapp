@@ -49,7 +49,7 @@ public class MySecurityConfig {
                         .requestMatchers("/","/index","/About","/Beigehoodiedetail","/Tshirt","/shoes","/hoodies"
                                 ,"/blackhoodiedetail","/detailblackt","/detailwhitetee","/grayhoodiedetail"
                                 ,"/hoodie","/search_result","/shoes","/vansallblack","/vansoldskool"
-                                ,"/vansallskoolblue","/whitehoodiedetail"
+                                ,"/vansallskoolblue","/whitehoodiedetail","/userform" ,"/newnew","/allusers","/userprocessing"
                                 ,"/CSS/**", "/JS/**", "/IMG/**","/video/**", "/assets/**", "/login/**").permitAll()
                         .requestMatchers("/admin/**" ,"/dashboard","/form","/updateproduct","/About","/dashboard/form" ,"/processing").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER","ADMIN")
