@@ -13,8 +13,7 @@ https://tyronrusty.github.io/thegarmentstore/
 
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/cHjWK30P/tyronrusty-github-io-thegarmentstore.png)
-
+![App Screenshot](https://i.postimg.cc/JnLCnxBD/tyscreen.png)
 
 ## Requirement 
 
