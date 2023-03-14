@@ -1,4 +1,4 @@
-# 
+
 # The Garment Store
 
 The Garment Store is a premium online clothing destination that offers a wide range of stylish and high-quality garments for fashion-forward individuals. Our website features a user-friendly interface and a sleek design, making it easy for customers to browse and purchase the latest fashion trends.
@@ -53,7 +53,7 @@ click here  [@Tyronrusty](https://www.linkedin.com/in/tyron-rusty/) to get in to
 
 ## Tech Stack
 
- -Html ,SpringBoot, MySql, Bootstrap, JavaScript and CSS
+ -Html , Bootstrap, JavaScript and CSS
 
 
 
