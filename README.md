@@ -53,7 +53,7 @@ click here  [@Tyronrusty](https://www.linkedin.com/in/tyron-rusty/) to get in to
 
 ## Tech Stack
 
- -Html , Bootstrap, JavaScript and CSS
+ -Html , Bootstrap, springBoot, JavaScript and CSS
 
 
 
