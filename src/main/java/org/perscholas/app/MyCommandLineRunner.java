@@ -79,10 +79,10 @@ public class MyCommandLineRunner implements CommandLineRunner {
 //        productRepoI.save(product34);
 //        productRepoI.save(product37);
 //
-//        MyUser customer1 = new MyUser(1, "John", "Doe", "johndoe@gmail.com", "123-456-7890", "password", "123 Main St", "New York", "NY", 10001);
+     MyUser customer1 = new MyUser(1, "John", "Doe", "johndoe@gmail.com", "123-456-7890", "password", "123 Main St", "New York", "NY", 10001);
 //        MyUser customer2 = new MyUser(2, "Jane", "Smith", "janesmith@gmail.com", "555-555-5555", "password", "456 1st Ave", "Los Angeles", "CA", 90001);
 //        MyUser customer3 = new MyUser(3, "Bob", "Johnson", "bjohnson@gmail.com", "111-111-1111", "password", "789 2nd St", "Chicago", "IL", 60601);
-//        MyUser customer4 = new MyUser(4, "Alice", "Williams", "awilliams@gmail.com", "555-123-4567", "password", "246 3rd St", "Houston", "TX", 77001);
+   MyUser customer4 = new MyUser(4, "Alice", "Williams", "awilliams@gmail.com", "555-123-4567", "password", "246 3rd St", "Houston", "TX", 77001);
 //        MyUser customer5 = new MyUser(5, "David", "Brown", "dbrown@gmail.com", "888-888-8888", "password", "135 4th St", "Philadelphia", "PA", 19019);
 //        myUserRepoI.save(customer1);
 //        myUserRepoI.save(customer2);
@@ -90,13 +90,13 @@ public class MyCommandLineRunner implements CommandLineRunner {
 //        myUserRepoI.save(customer4);
 //        myUserRepoI.save(customer5);
 //
-//        AuthGroup authGroup1 = new AuthGroup ("johndoe@gmail.com","ROLE_USER");
-//        AuthGroup authGroup2 = new AuthGroup ("johndoe@gmail.com","ROLE_ADMIN");
+      AuthGroup authGroup1 = new AuthGroup ("awilliams@gmail.com","ROLE_USER");
+      AuthGroup authGroup2 = new AuthGroup ("janesmith@gmail.com","ROLE_ADMIN");
 //
 //        AuthGroup authGroup3= new AuthGroup ("janesmith@gmail.com","ROLE_USER");
 //
-//        authGroupRepoI.save(authGroup1);
-//        authGroupRepoI.save(authGroup2);
+      authGroupRepoI.save(authGroup1);
+      authGroupRepoI.save(authGroup2);
 //        authGroupRepoI.save(authGroup3);
 //
 //

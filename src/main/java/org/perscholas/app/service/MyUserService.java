@@ -26,15 +26,6 @@ public class MyUserService {
         this.myUserRepoI = myUserRepoI;
     }
 
-    public void deleteCustomer(String email) throws Exception {
-        Optional<MyUser> wantToDelete = myUserRepoI.findByEmailAllIgnoreCase(email);
-        if (wantToDelete.isPresent()) {
-            myUserRepoI.delete(wantToDelete.get());
-            log.debug("customer was deleted");
-        } else {
-            throw new Exception("Can't find the product with id " + email);
-        }
-    }
 
     public List<MyUser> ListAll() {
 

@@ -49,14 +49,25 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" th:href="@{/form}">Add product</a>
+              <a class="nav-link" th:href="@{/userform}">Add users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/dashboard}">dashboard</a>
             </li>
           </ul>
           
           
           <a style="text-decoration: none; font-size: 110% ;font-weight: bold;" class="col align-self-center text-center  text-dark lh-1 py-3" href="index.html">THE GARMENT STORE</a>
 
-   
+          <ul class="nav navbar-nav ml-auto align-content-end">
+            <li class="nav-item">
+              <a  style="margin-right: 10px; text-decoration: none; " class="nav-link text-dark" th:href="@{/login}">
+                
+                <span class=""sec:authentication="name" sec:authorize="hasRole('USER')"></span> 
+                <img th:src="@{/IMG/login.svg}" width="30" height="30" alt="Sign up icon">
+              </a>
+            </li>
+          </ul>
         </div>
         
       </div>
@@ -68,7 +79,7 @@
       <div class="container px-4 text-center">
         <h1 class="fw-bolder">Garment store admin portal</h1>
         <p class="lead">
-          A list of product inventory!!
+          List of all users
         </p>
       </div>
     </header>
@@ -77,7 +88,7 @@
       <div class="container px-4">
         <div class="row gx-4 justify-content-center">
           <div class="col-lg-8">
-            <h2>product</h2>
+            <h2>users</h2>
             <table class="table table-hover text-uppercase">
               <thead>
                 <tr>

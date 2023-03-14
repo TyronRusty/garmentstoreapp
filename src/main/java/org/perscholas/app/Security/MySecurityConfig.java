@@ -49,9 +49,9 @@ public class MySecurityConfig {
                         .requestMatchers("/","/index","/About","/Beigehoodiedetail","/Tshirt","/shoes","/hoodies"
                                 ,"/blackhoodiedetail","/detailblackt","/detailwhitetee","/grayhoodiedetail"
                                 ,"/hoodie","/search_result","/shoes","/vansallblack","/vansoldskool"
-                                ,"/vansallskoolblue","/whitehoodiedetail","/userform" ,"/newnew","/allusers","/userprocessing"
+                                ,"/vansallskoolblue","/whitehoodiedetail","/userprocessing","/userform"
                                 ,"/CSS/**", "/JS/**", "/IMG/**","/video/**", "/assets/**", "/login/**").permitAll()
-                        .requestMatchers("/admin/**" ,"/dashboard","/form","/updateproduct","/About","/dashboard/form" ,"/processing").hasRole("ADMIN")
+                        .requestMatchers("/admin/**" ,"/dashboard","/form","/updateproduct","newuserform","/allusers","/About","/dashboard/form" ,"/processing").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasAnyRole("USER","ADMIN")
                         .anyRequest().authenticated()
                 )
